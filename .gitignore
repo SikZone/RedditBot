@@ -55,3 +55,4 @@ target/
 
 config_bot.py
 posts_replied_to.txt
+Part2/config_skel.py

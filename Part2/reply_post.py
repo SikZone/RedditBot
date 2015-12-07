@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python3
 import praw
 import pdb
 import re
@@ -7,8 +7,8 @@ from config_bot import *
 
 # Check that the file that contains our username exists
 if not os.path.isfile("config_bot.py"):
-    print "You must create a config file with your username and password."
-    print "Please see config_skel.py"
+    print ("You must create a config file with your username and password.")
+    print ("Please see config_skel.py")
     exit(1)
 
 # Create the Reddit instance
@@ -28,22 +28,24 @@ else:
     with open("posts_replied_to.txt", "r") as f:
         posts_replied_to = f.read()
         posts_replied_to = posts_replied_to.split("\n")
-        posts_replied_to = filter(None, posts_replied_to)
+        posts_replied_to = list(filter (bool, posts_replied_to))
+
+
 
 # Get the top 5 values from our subreddit
-subreddit = r.get_subreddit('pythonforengineers')
-for submission in subreddit.get_hot(limit=5):
+subreddit = r.get_subreddit('ntebis')
+for submission in subreddit.get_hot(limit=1):
     # print submission.title
 
     # If we haven't replied to this post before
     if submission.id not in posts_replied_to:
 
         # Do a case insensitive search
-        if re.search("i love python", submission.title, re.IGNORECASE):
-            # Reply to the post
-            submission.add_comment("Nigerian scammer bot says: It's all about the Bass (and Python)")
-            print "Bot replying to : ", submission.title
+        if submission.author.name == 'ntebis'.lower():
 
+            # Reply to the post
+            submission.add_comment("Καλησπέρα admin. Είσαι και ο πρώτος. Γαμάς ρε φίλε. Άπειρο ρησπεκτ. Θέλω να γίνω η μητέρα των παιδιών σου. <3 #nohomo \n \n This is an automated message. --/u/sikzone bot ")
+            print("replied")
             # Store the current id into our list
             posts_replied_to.append(submission.id)
 
