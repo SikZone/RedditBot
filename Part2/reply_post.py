@@ -5,6 +5,13 @@ import re
 import os
 from config_bot import *
 
+# Replace this with the message you want the other user to see
+message = "Καλησπέρα admin. Είσαι και ο πρώτος. Γαμάς ρε φίλε. Άπειρο ρησπεκτ. Θέλω να γίνω η μητέρα των παιδιών σου. <3 #nohomo \n \n This is an automated message. --Magic bot "
+# The relevant subreddit
+subrdit = "ntebis"
+# Target user name
+targetUser = 'ntebis'
+
 # Check that the file that contains our username exists
 if not os.path.isfile("config_bot.py"):
     print ("You must create a config file with your username and password.")
@@ -33,7 +40,7 @@ else:
 
 
 # Get the top 5 values from our subreddit
-subreddit = r.get_subreddit('ntebis')
+subreddit = r.get_subreddit(subrdit)
 for submission in subreddit.get_hot(limit=1):
     # print submission.title
 
@@ -41,10 +48,10 @@ for submission in subreddit.get_hot(limit=1):
     if submission.id not in posts_replied_to:
 
         # Do a case insensitive search
-        if submission.author.name == 'ntebis'.lower():
+        if submission.author.name == targetUser.lower():
 
             # Reply to the post
-            submission.add_comment("Καλησπέρα admin. Είσαι και ο πρώτος. Γαμάς ρε φίλε. Άπειρο ρησπεκτ. Θέλω να γίνω η μητέρα των παιδιών σου. <3 #nohomo \n \n This is an automated message. --/u/sikzone bot ")
+            submission.add_comment(message)
             print("replied")
             # Store the current id into our list
             posts_replied_to.append(submission.id)
