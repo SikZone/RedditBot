@@ -11,3 +11,7 @@ The bot runs in the background and monitors a website. When it sees a change (li
 To learn how to build this bot, please see:
 
 http://pythonforengineers.com/build-a-reddit-bot-part-1/
+
+
+=========
+ This bot has been modified to stalk a user and post a custom comment in every post they make.
