@@ -14,4 +14,5 @@ http://pythonforengineers.com/build-a-reddit-bot-part-1/
 
 
 =========
- This bot has been modified to stalk a user and post a custom comment in every post they make.
+ This bot has been modified to stalk a user and post a custom comment in every post they make. 
+ Just modify the first three variables in https://github.com/SikZone/RedditBot/blob/master/Part2/reply_post.py
